@@ -13,7 +13,10 @@
  * @return {boolean} true if n is bigger than 2
  */
 export function isBiggerThan2(n) {
-  // Write your code here
+  if (typeof n === 'string' || Number.isNaN(n)) {
+    throw new Error('Error! This is not a number.')
+  }
+  return n > 2
 }
 
 /**
