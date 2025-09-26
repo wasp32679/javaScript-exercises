@@ -15,7 +15,10 @@ export function computeSphereVolume(diameter) {
  * @return {number} number rounded to one decimal
  */
 export function roundNumberToOneDecimals(n) {
-  // Write your code here
+  if (typeof n === 'string' || Number.isNaN(n)) {
+    throw new Error('wrong format')
+  }
+  return Math.round(n * 10) / 10
 }
 
 /**
@@ -23,7 +26,17 @@ export function roundNumberToOneDecimals(n) {
  * @return {number} average with full precision
  */
 export function computeAverage(grades) {
-  // Write your code here
+  if (
+    !Array.isArray(grades) ||
+    grades.some((item) => typeof item !== 'number' || Number.isNaN(item))
+  ) {
+    throw new Error('wrong format')
+  }
+  let sum = 0
+  for (let i = 0; i < grades.length; i++) {
+    sum += grades[i]
+  }
+  return sum / grades.length
 }
 
 /**
@@ -31,5 +44,15 @@ export function computeAverage(grades) {
  * @return {number} rounded average to 1 decimal
  */
 export function roundedAverage(grades) {
-  // Write your code here
+  if (
+    !Array.isArray(grades) ||
+    grades.some((item) => typeof item !== 'number' || Number.isNaN(item))
+  ) {
+    throw new Error('wrong format')
+  }
+  let sum = 0
+  for (let i = 0; i < grades.length; i++) {
+    sum += grades[i]
+  }
+  return Math.round((sum / grades.length) * 10) / 10
 }
