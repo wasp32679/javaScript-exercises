@@ -7,5 +7,9 @@
  * @return {string} the resulting string, with all needle words transformed to newWord
  */
 export function findAndReplacePreservingCase(needle, haystack, newWord) {
-  // Write your code here
+  if (typeof needle || haystack !== 'string' || needle || haystack === '') {
+    throw new Error('wrong format')
+  }
+  for (let i = 0; i < needle.length; i++)
+    haystack.replace(needle[i], newWord[i])
 }
