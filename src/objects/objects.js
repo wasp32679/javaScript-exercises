@@ -10,7 +10,11 @@
  * The values of the properties should be "Toto", "Tutu"
  */
 export function crateUserObject() {
-  // Write your code here
+  const obj = {
+    first_name: 'Toto',
+    last_name: 'Tutu',
+  }
+  return obj
 }
 
 /**
@@ -18,9 +22,7 @@ export function crateUserObject() {
  * @param {{first_name: string, last_name:string}} object A user object
  * @return string a concatenation of the first and last name, separated with a space
  */
-export function accessPropertiesInObjects(object) {
-  // Write your code here
-}
+export function accessPropertiesInObjects(object) {}
 
 /**
  *
