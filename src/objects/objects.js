@@ -47,7 +47,15 @@ export function iteratesThroughObjectValuesAndProperties(object) {
  * @return {{younger: string, older: string}}
  */
 export function retrieveMaximumMinimumUserAges(users) {
-  // Write your code here
+  const yno = {
+    younger: users.reduce((youngest, current) =>
+      current.age < youngest.age ? current : youngest,
+    ).name,
+    older: users.reduce((oldest, current) =>
+      current.age < oldest.age ? oldest : current,
+    ).name,
+  }
+  return yno
 }
 
 /**
@@ -57,7 +65,8 @@ export function retrieveMaximumMinimumUserAges(users) {
  * @return {Object} An object retried by parsing the string
  */
 export function parseJavaScriptObjectNotation(string) {
-  // Write your code here
+  const parsed = JSON.parse(string)
+  return parsed
 }
 
 /**
@@ -65,5 +74,6 @@ export function parseJavaScriptObjectNotation(string) {
  * @return {string} An string representing the given object
  */
 export function stringifyJavaScriptObjectNotation(object) {
-  // Write your code here
+  const parsed = JSON.stringify(object)
+  return parsed
 }
