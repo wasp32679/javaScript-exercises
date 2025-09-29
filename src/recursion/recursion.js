@@ -1,3 +1,5 @@
+import { error } from 'console'
+
 /**
  * Calculate the factorial of a number using recursion
  * Factorial of n (n!) is the product of all positive integers less than or equal to n
@@ -6,7 +8,13 @@
  * @return {number} The factorial of n
  */
 export function factorial(n) {
-  // Write your code here
+  if (typeof n !== 'number' || !Number.isInteger(n) || n < 0) {
+    throw new Error('wrong format')
+  }
+  if (n === 0 || n === 1) {
+    return 1
+  }
+  return n * factorial(n - 1)
 }
 
 /**
