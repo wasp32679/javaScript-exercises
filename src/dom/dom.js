@@ -8,7 +8,7 @@
  * You need to change the color of the html element with the id "change-my-color"
  */
 export function getElementFromDomAndChangeColorToRed() {
-  // Write your code here
+  document.getElementById('change-my-color').style.color = 'red'
 }
 
 /**
