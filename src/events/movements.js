@@ -4,7 +4,10 @@
  * You need to display coordinates as follows : "x: 232, y: 332
  */
 export function mouseMovements() {
-  // Write your code here
+  document.addEventListener('mousemove', (event) => {
+    document.getElementById('mouse-coordinates').innerText =
+      `x: ${event.clientX}, y: ${event.clientY}`
+  })
 }
 
 const randomRGB = () => {
