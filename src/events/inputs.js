@@ -4,14 +4,17 @@
  * If input his empty, you should not trigger the alert
  */
 export function displayInputContentInAlertOnEnterKey() {
+  // listen enter event
+  // if empty -> do nothing
+
   const input = document.getElementById('write-some-text')
-  if (input !== '') {
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      if (input.value.trim() !== '') {
         alert(input.value)
       }
-    })
-  }
+    }
+  })
 }
 
 /**
@@ -20,7 +23,25 @@ export function displayInputContentInAlertOnEnterKey() {
  * the text should be added to a list of elements with id "list".
  */
 export function addElementsInListOnEnterKey() {
-  // Write your code here
+  const listInput = document.getElementById('list-input')
+  listInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      if (listInput.value.trim() !== '') {
+        const listText = document.createElement('li')
+        listText.innerText = listInput.value
+        document.getElementById('list').appendChild(listText)
+        listInput.value = ''
+      }
+    }
+  })
+  listInput.addEventListener('blur', () => {
+    if (listInput.value.trim() !== '') {
+      const listText = document.createElement('li')
+      listText.innerText = listInput.value
+      document.getElementById('list').appendChild(listText)
+      listInput.value = ''
+    }
+  })
 }
 
 /**
