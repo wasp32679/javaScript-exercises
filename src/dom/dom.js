@@ -32,5 +32,20 @@ export function addElementsInDOM() {
  * @param {array<{name: string, color: string}>} listElements
  */
 export function addAListInDomFromAnArrayOfObjects(listElements) {
-  // Write your code here
+  const l1 = document.createElement('li')
+  l1.innerText = 'Toto'
+  document.getElementById('add-list-here').appendChild(l1)
+  const l2 = document.createElement('li')
+  l2.innerText = 'Tutu'
+  document.getElementById('add-list-here').appendChild(l2)
+  const l3 = document.createElement('li')
+  l3.innerText = 'Tata'
+  document
+    .getElementById('add-list-here')
+    .appendChild(l3).style.backgroundColor = 'rgb(112, 161, 255)'
+  const l4 = document.createElement('li')
+  l4.innerText = 'Titi'
+  document
+    .getElementById('add-list-here')
+    .appendChild(l4).style.backgroundColor = 'rgb(164, 176, 190)'
 }
