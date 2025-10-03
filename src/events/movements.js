@@ -18,6 +18,27 @@ const randomRGB = () => {
 }
 let enteringColor = ''
 
+const focusInput = document.getElementById('focus-me')
+
+let defaultColor = getComputedStyle(focusInput).borderColor
+
+const focusLabel = document.querySelectorAll('label[for="focus-me"]')
+
+const usedColors = []
+
+const getColor = () => {
+  const hex = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)]
+  }
+  if (color === defaultColor || usedColors.includes(color)) {
+    return getColor()
+  }
+  usedColors.push(color)
+  return color
+}
+
 /**
  * On the page, you have an input with the id "focus-me".
  * You need to add three behaviors to this input.
@@ -28,7 +49,27 @@ let enteringColor = ''
  * Third, when you loose focus of the field, you need to reset the border color to the default one.
  */
 export function hoverFocusAndBlur() {
-  // Write your code here
+  for (let i = 0; i < focusLabel.length; i++) {
+    focusLabel[i].dataset.default = focusLabel[i].innerText
+  }
+  focusInput.addEventListener('mouseover', () => {
+    for (let i = 0; i < focusLabel.length; i++) {
+      focusLabel[i].innerText = 'Yes, you hover me !'
+    }
+  })
+  focusInput.addEventListener('mouseleave', () => {
+    for (let i = 0; i < focusLabel.length; i++) {
+      focusLabel[i].innerText = focusLabel[i].dataset.default
+    }
+  })
+
+  focusInput.addEventListener('focus', () => {
+    const color = getColor()
+    focusInput.style.borderColor = color
+  })
+  focusInput.addEventListener('blur', () => {
+    focusInput.style.borderColor = defaultColor
+  })
 }
 
 /**
@@ -40,5 +81,13 @@ export function hoverFocusAndBlur() {
  * Take the opportunity to also apply this colour to the text of the 2 input labels.
  */
 export function changesOnInputEvents() {
-  // Write your code here
+  focusInput.addEventListener('input', () => {
+    defaultColor = getColor()
+  })
+  focusInput.addEventListener('blur', () => {
+    focusInput.style.borderColor = defaultColor
+    for (let i = 0; i < focusLabel.length; i++) {
+      focusLabel[i].style.color = defaultColor
+    }
+  })
 }

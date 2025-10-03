@@ -6,5 +6,17 @@
  * Then, you have to display the content returned by the api on the "pre" tag with id "display-here"
  */
 export function fetchDataOnClick() {
-  // Write your code here
+  const url = 'https://api.github.com/octocat'
+
+  const fetchBtn = document.getElementById('click-to-fetch')
+
+  const pre = document.getElementById('display-here')
+
+  async function getPost() {
+    const reponse = await fetch(url)
+    const result = await reponse.text()
+    pre.innerText = result
+  }
+
+  fetchBtn.addEventListener('click', getPost)
 }
